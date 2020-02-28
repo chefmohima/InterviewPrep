@@ -11,4 +11,22 @@ conn.close()
 
 
 QUERIES
+drop vs delete vs truncate
+drop removes table + metadata
+truncate removes all data and not the structure
+delete can remove all data or selected data
+drop and truncate are ddl and cannot be rolled back
+delete is DML and can be rolled ack
+
+
+CONSTRAINTS
+not null, unique, primary key, foreign key, check
+
+SELECT CUSTOMERS.NAME, CUSTOMERS.ADDRESS ,ORDERS.ORDER_ID
+FROM CUSTOMERS
+RIGHT JOIN ORDERS
+ON ID = CUSTOMER_ID;
+
+
+
 
