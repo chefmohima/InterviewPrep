@@ -1,0 +1,30 @@
+### remove all whitespaces
+
+### capitalize starting letter of each word
+
+### print string/file with newline after every 3 words
+
+### store every line from a file into a list( what if the file is large, optimized approach)
+
+### replace every special char in string
+
+### generate random strings
+https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits
+
+### count occurence of char in a string
+string.count(char)
+
+### Split Strings into words with multiple word boundary delimiters
+"Hey, you - what are you doing here!?"
+should be
+['hey', 'you', 'what', 'are', 'you', 'doing', 'here']
+
+```for sym in ["?", "!"]:
+    s = s.replace(sym, '')
+```
+
+
+
+
+
+
