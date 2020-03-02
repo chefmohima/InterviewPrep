@@ -24,6 +24,59 @@ should be
 ```
 
 
+#### When comparing values remeber to use == and not 'is'
+is compares if they are same objects, == compares if they have same value
+
+#### sort vs sorted
+list.sort() will sort the list in place
+sorted(list) returns a sorted list but does not change the originial list.
+
+#### last n characters of string S
+S[len(S)-n:]
+
+####Split string every nth character?
+Is it possible to split a string every nth character? For example, 
+suppose I have a string containing the following: '1234567890' How can I get it to look like this: ['12','34','56','78','90']
+
+Basically every time we are splitting away 2 chars from the string and leave the string with s[2:] and split on s[2:]
+we do this till sis not empty
+```
+while s:
+    print(s[:2])           # print or do what you like
+    s = s[2:]
+    
+12
+34
+56
+78
+90
+```
+
+
+#### 
+find if a string is repeated in another string
+Example: chack how many times 'ab' is in the string 'abbbabcbaab'
+
+```
+count = 0
+s
+'abbbabcbaab'
+for i in range(len(s)):
+    if s[i:i+2].find('ab') != -1:
+        print(i)
+        count += 1        
+        
+0
+4
+9
+```
+
+
+
+
+
+
+
 
 
 
