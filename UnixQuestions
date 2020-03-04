@@ -26,8 +26,24 @@ print(word_count("/home/cloud_user/tests/file1"))
 ```
 
 3. List all the files in directory except .txt and .pdf
+```
+for file in os.listdir(os.getcwd()):
+...     filepath = os.path.abspath(file)
+...     name, ext = os.path.splitext(filepath)
+...     if ext in ('py','pdf'):
+...         print(name)
+```
+
 4. Rename all .jpg files to .jpeg
+ for f in os.listdir(os.getcwd()):
+...     fpath = os.path.abspath(file)
+...     fname, fext = os.splitext(fpath)
+...     if fext != 'py':
+...         newname = os.getcwd() + '/' + fname + '.jpg'
+...         os.rename(fpath, newname)
+
 5. Delete files of size more than 100mb in a folder which are older than 90 days
+
 6. Reverse the words in a sentence
 7. Given an input file having lines with alphabets and numbers. Print only the distinct alpha-numberic lines.
 8. Given a comma separated input file with items, category and cost. Display the category and its sum.
