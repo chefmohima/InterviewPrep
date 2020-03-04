@@ -1,0 +1,831 @@
+Ques.2. What are the different forms of Selenium?
+Ans. Selenium comes in four forms-
+
+Selenium WebDriver – Selenium WebDriver is used to automate web applications using the browser’s native methods.
+Selenium IDE – A firefox plugin that works on record and playback principle.
+Selenium RC – Selenium Remote Control(RC) is officially deprecated by selenium and it used to work on javascript to automate the web applications.
+Selenium Grid – Allows selenium tests to run in parallel across multiple machines.
+Ques.3. What are some advantages of Selenium?
+Ans. Following are the advantages of Selenium-
+
+Selenium is open source and free to use without any licensing cost.
+It supports multiple languages like java, ruby, python, etc.
+It supports multi-browser testing.
+It has a good amount of resources and helping community over the internet.
+Using Selenium IDE component, non-programmers can also write automation scripts
+Using the selenium grid component, distributed testing can be carried out on remote machines.
+Ques.4. What are some limitations of Selenium?
+Ans. Following are the limitations of Selenium-
+
+We cannot test desktop applications using Selenium.
+We cannot test web services using Selenium.
+For creating robust scripts in Selenium Webdriver, programming language knowledge is required.
+We have to rely on external libraries and tools for performing tasks like – logging(log4J), testing framework-(TestNG, JUnit), reading from external files(POI for excels), etc.
+Ques.5. Which browsers/drivers are supported by Selenium Webdriver?
+Ans. Some commonly used browsers supported by Selenium are-
+
+Google Chrome – ChromeDriver
+Firefox – FireFoxDriver
+Internet Explorer – InternetExplorerDriver
+Safari – SafariDriver
+HtmlUnit (Headless browser) – HtmlUnitDriver
+Android – Selendroid/Appium
+IOS – ios-driver/Appium
+Ques.6. Can we test APIs or web services using Selenium Webdriver?
+Ans. No Selenium WebDriver uses the browser’s native method to automate the web applications. Since web services are headless, so we cannot automate web services using selenium WebDriver.
+
+Ques.7. What is the testing type supported by Selenium WebDriver?
+Ans. Selenium Webdriver can be used for performing automated functional and regression testing.
+
+Ques.8. What are the various ways of locating an element in Selenium?
+Ans. The different locators in Selenium are-
+
+Id
+XPath
+CSS selector
+className
+tagName
+name
+link text
+partialLinkText
+
+Ques.9. What is an XPath?
+Ans. Xpath or XML path is a query language for selecting nodes from XML documents. XPath is one of the locators supported by Selenium Webdriver.
+
+Ques.10. What is an absolute XPath?
+Ans. An absolute XPath is a way of locating an element using an XML expression beginning from root node i.e. HTML node in case of web pages. The main disadvantage of absolute XPath is that even with the slightest change in the UI or any element the whole absolute XPath fails.
+Example – html/body/div/div[2]/div/div/div/div[1]/div/input
+
+Ques.11. What is a relative XPath?
+Ans. A relative XPath is a way of locating an element using an XML expression beginning from anywhere in the HTML document. There are different ways of creating relative XPaths which are used for creating robust XPaths (unaffected by changes in other UI elements).
+Example – //input[@id=’username’]
+
+Ques.12. What is the difference between single slash(/) and double slash(//) in XPath?
+Ans. In XPath a single slash is used for creating XPaths with absolute paths beginning from the root node.
+Whereas double slash is used for creating relative XPaths.
+
+Ques.13. How can we inspect the web element attributes in order to use them in different locators?
+Ans. Using Firebug or developer tools we can inspect the specific web elements.
+Firebug is a plugin of firefox that provides various development tools for debugging applications. From an automation perspective, firebug is used specifically for inspecting web-elements in order to use their attributes like id, class, name, etc. in different locators.
+
+Ques.14. How can we locate an element by only partially matching the value of its attributes in Xpath?
+Ans. Using contains() method we can locate an element by partially matching its attribute’s value. This is particularly helpful in scenarios where the attributes have dynamic values with certain constant parts.
+
+xPath expression = //*[contains(@name,'user')]
+The above statement will match all the values of the name attribute containing the word ‘user’ in them.
+
+Ques.15. How can we locate elements using their text in XPath?
+Ans. Using the text() method –
+
+xPathExpression = //*[text()='username']
+
+Ques.16. How can we move to the parent of an element using XPath?
+Ans. Using ‘..’ expression in XPath we can move to the parent of an element e.g. the locator //div[@id=”childId”]/.. will move to the parent of the div element with id value as ‘childId’.
+
+Ques.17. How can we move to nth-child element using XPath?
+Ans. There are two ways of navigating to the nth element using XPath-
+
+Using square brackets with index position-
+Example – div[2] will find the second div element.
+Using position()-
+Example – div[position()=3] will find the third div element.
+
+Ques.18. What is the syntax of finding elements by class using CSS Selector?
+Ans. By .className we can select all the elements belonging to a particular class e.g. ‘.red’ will select all elements having class ‘red’.
+
+Ques.19. What is the syntax of finding elements by id using CSS Selector?
+Ans. By #idValue we can select all the elements belonging to a particular class e.g. ‘#userId’ will select the element having an id – userId.
+
+Ques.20. How can we select elements by their attribute value using the CSS Selector?
+Ans. Using [attribute=value] we can select all the elements belonging to a particular class e.g. ‘[type=small]’ will select the element having attribute type of value ‘small’.
+
+Ques.21. How can we move to nth-child element using CSS selector?
+Ans. Using :nth-child(n) we can move to the nth child element e.g. div:nth-child(2) will locate 2nd div element of its parent.
+
+Ques.22. What is the fundamental difference between XPath and CSS selectors?
+Ans. The fundamental difference between XPath and CSS selector is using XPaths we can traverse up in the document i.e. we can move to parent elements. Whereas using CSS selector we can only move downwards in the document.
+
+
+Selenium Java Interview Questions
+Ques.23. How can we launch different browsers in Selenium WebDriver?
+Ans. By creating an instance of driver of a particular browser-
+
+WebDriver driver = new FirefoxDriver();
+
+Ques.24. What is the use of driver.get(“URL”) and driver.navigate().to(“URL”) commands? Is there any difference between the two?
+Ans. Both driver.get(“URL”) and driver.navigate().to(“URL”) commands are used to navigate to a URL passed as parameter.
+There is a minor difference between the two commands-
+
+driver.navigate() allows moving back and forward in browser history using driver.navigate().forward() and driver.navigate().back() commands.
+In the case of single-page applications (where the URL is appended by ‘#’ to navigate to different sections of the page), driver.navigate().to() navigates to a particular section by changing the URL without refreshing the page whereas driver.get() refreshes the page also.
+This refreshing of the page is also the primary reason because of which history is not maintained in case of the driver.get() command.
+Reference – Stack overflow
+Ques.25. How can we type text in a textbox element using selenium?
+Ans. Using sendKeys() method we can type text in a textbox-
+
+1
+2
+WebElement searchTextBox = driver.findElement(By.id("srch"));
+searchTextBox.sendKeys("searchTerm");
+
+Ques.26. How can we clear a text written in a textbox?
+Ans. Using a clear() method we can delete the text written in a textbox.
+
+driver.findElement(By.id("elementLocator")).clear();
+
+Ques.27. How to check a checkBox in selenium?
+Ans. The same click() method used for clicking buttons or radio buttons can be used for checking the checkbox as well.
+
+Ques.28. How can we submit a form in selenium?
+Ans. Using the submit() method we can submit a form in selenium.
+
+driver.findElement(By.id("form1")).submit();
+Also, the click() method can be used for the same purpose.
+
+Ques.29. Explain the difference between close and quit command.
+Ans. driver.close() – Used to close the current browser having a focus
+driver.quit() – Used to close all the browser instances
+
+Ques.30. How to switch between multiple windows in selenium?
+Ans. Selenium has driver.getWindowHandles() and driver.switchTo().window(“{windowHandleName}”) commands to work with multiple windows. The getWindowHandles() command returns a list of ids corresponding to each window and on passing a particular window handle to driver.switchTo().window(“{windowHandleName}”) command we can switch control/focus to that particular window.
+
+1
+2
+3
+for (String windowHandle : driver.getWindowHandles()) {
+     driver.switchTo().window(handle);
+}
+Ques.31. What is the difference between driver.getWindowHandle() and driver.getWindowHandles() in selenium?
+Ans. driver.getWindowHandle() returns a handle of the current page (a unique identifier)
+Whereas driver.getWindowHandles() returns a set of handles of the all the pages available.
+
+Ques.32. How can we move to a particular frame in selenium?
+Ans. The driver.switchTo() commands can be used for switching to frames.
+
+driver.switchTo().frame("{frameIndex/frameId/frameName}");
+For locating a frame we can either use the index (starting from 0), its name or Id.
+
+Ques.33. Can we move back and forward in the browser using selenium?
+Ans. Yes, using driver.navigate().back() and driver.navigate().forward() commands we can move backward and forward in a browser.
+
+Ques.34. Is there a way to refresh the browser using selenium?
+Ans. There a multiple ways to refresh a page in selenium-
+
+Using driver.navigate().refresh() command
+Using sendKeys(Keys.F5) on any textbox on the webpage
+Using driver.get(“URL”) on the current URL or using driver.getCurrentUrl()
+Using driver.navigate().to(“URL”) on the current URL or driver.navigate().to(driver.getCurrentUrl());
+
+Ques.35. How can we maximize the browser window in selenium?
+Ans. We can maximize browser window in selenium using the following command-
+
+driver.manage().window().maximize();
+
+Ques.36. How can we fetch a text written over an element?
+Ans. Using the getText() method we can fetch the text over an element.
+
+String text = driver.findElement("elementLocator").getText();
+
+Ques.37. How can we find the value of different attributes like name, class, value of an element?
+Ans. Using getAttribute(“{attributeName}”) method we can find the value of different attributes of an element e.g.-
+
+1
+2
+String valueAttribute =
+driver.findElement(By.id("locator")).getAttribute("value");
+
+Ques.38. How to delete cookies in selenium?
+Ans. Using deleteAllCookies() method-
+
+driver.manage().deleteAllCookies();
+
+Ques.39. What is an implicit wait in Selenium?
+Ans. An implicit wait is a type of wait that waits for a specified time while locating an element before throwing NoSuchElementException. By default, selenium tries to find elements immediately when required without any wait. So, it is good to use implicit wait. This wait is applied to all the elements of the current driver instance.
+
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+Ques.40. What is an explicit wait in Selenium?
+Ans. An explicit wait is a type of wait that is applied to a particular web element until the expected condition specified is met.
+
+1
+2
+3
+WebDriverWait wait = new WebDriverWait(driver, 10);
+ 
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("elementId")));
+
+Ques.41. What are some expected conditions that can be used in Explicit waits?
+
+Ans. Some of the commonly used expected conditions of an element that can be used with expicit waits are-
+
+elementToBeClickable(WebElement element or By locator)
+stalenessOf(WebElement element)
+visibilityOf(WebElement element)
+visibilityOfElementLocated(By locator)
+invisibilityOfElementLocated(By locator)
+attributeContains(WebElement element, String attribute, String value)
+alertIsPresent()
+titleContains(String title)
+titleIs(String title)
+textToBePresentInElementLocated(By, String)
+
+Ques.42. What is fluent wait in selenium?
+
+Ans. A fluent wait is a type of wait in which we can also specify polling interval(intervals after which driver will try to find the element) along with the maximum timeout value.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+Wait wait = new FluentWait(driver)
+  
+    .withTimeout(20, SECONDS)
+  
+    .pollingEvery(5, SECONDS)
+  
+    .ignoring(NoSuchElementException.class);
+  
+  WebElement textBox = wait.until(new Function<webdriver,webElement>() {
+  
+    public WebElement apply(WebDriver driver) {
+  
+    return driver.findElement(By.id("textBoxId"));
+  
+    }
+}
+);
+
+Ques.43. What are the different keyboard operations that can be performed in selenium?
+Ans. The different keyboard operations that can be performed in selenium are-
+
+.sendKeys(“sequence of characters”) – Used for passing character sequence to an input or textbox element.
+.pressKey(“non-text keys”) – Used for keys like control, function keys etc that are non-text.
+.releaseKey(“non-text keys”) – Used in conjunction with keypress event to simulate releasing a key from keyboard event.
+
+Ques.44. What are the different mouse actions that can be performed?
+Ans. The different mouse evenets supported in selenium are
+
+click(WebElement element)
+doubleClick(WebElement element)
+contextClick(WebElement element)
+mouseDown(WebElement element)
+mouseUp(WebElement element)
+mouseMove(WebElement element)
+mouseMove(WebElement element, long xOffset, long yOffset)
+
+Ques.45. Write the code to double click an element in selenium?
+Ans. Code to double click an element in selenium-
+
+1
+2
+3
+Actions action = new Actions(driver);
+WebElement element=driver.findElement(By.id("elementId"));
+action.doubleClick(element).perform();
+
+Ques.46. Write the code to right-click an element in selenium?
+Code to right-click an element in selenium-
+
+1
+2
+3
+Actions action = new Actions(driver);
+WebElement element=driver.findElement(By.id("elementId"));
+action.contextClick(element).perform();
+
+Ques.47. How to mouse hover an element in selenium?
+Ans. Code to mouse hover over an element in selenium-
+
+1
+2
+3
+Actions action = new Actions(driver);
+WebElement element=driver.findElement(By.id("elementId"));
+action.moveToElement(element).perform();
+
+Ques.48. How to fetch the current page URL in selenium?
+Ans. Using getCurrentURL() command we can fetch the current page URL-
+
+driver.getCurrentUrl();
+
+Ques.49. How can we fetch the title of the page in selenium?
+Ans. Using driver.getTitle(); we can fetch the page title in selenium. This method returns a string containing the title of the webpage.
+
+Ques.50. How can we fetch the page source in selenium?
+Ans. Using the driver.getPageSource(); we can fetch the page source in selenium. This method returns a string containing the page source.
+
+Ques.51. How to verify tooltip text using selenium?
+Ans. Tooltips web elements have an attribute of type ‘title’. By fetching the value of the ‘title’ attribute we can verify the tooltip text in selenium.
+
+String toolTipText = element.getAttribute("title");
+
+Ques.52. How to locate a link using its text in selenium?
+Ans. Using linkText() and partialLinkText() we can locate a link. The difference between the two is linkText matches the complete string passed as a parameter to the link texts. Whereas partialLinkText matches the string parameter partially with the link texts.
+
+WebElement link1 = driver.findElement(By.linkText("artOfTesting"));
+WebElement link2 = driver.findElement(By.partialLinkText("artOf"));
+
+Ques.53. What are DesiredCapabilities in Selenium WebDriver?
+Ans. Desired capabilities are a set of key-value pairs that are used for storing or configuring browser-specific properties like its version, platform, etc in the browser instances.
+
+Ques.54. How can we find all the links on a web page?
+Ans. All the links are of anchor tag ‘a’. So by locating elements of tagName ‘a’ we can find all the links on a webpage.
+
+List<WebElement> links = driver.findElements(By.tagName("a"));
+
+Ques.55. What are some commonly encountered exceptions in selenium?
+Ans. Some of the commonly seen exceptions in Selenium are-
+
+NoSuchElementException – When no element could be located from the locator provided.
+ElementNotVisibleException – When an element is present in the dom but is not visible.
+NoAlertPresentException – When we try to switch to an alert but the targetted alert is not present.
+NoSuchFrameException – When we try to switch to a frame but the targetted frame is not present.
+NoSuchWindowException – When we try to switch to a window but the targetted window is not present.
+UnexpectedAlertPresentException – When an unexpected alert blocks the normal interaction of the driver.
+TimeoutException – When a command execution gets a timeout.
+InvalidElementStateException – When the state of an element is not appropriate for the desired action.
+NoSuchAttributeException – When we are trying to fetch an attribute’s value but the attribute is not correct
+WebDriverException – When there is some issue with driver instance preventing it from getting launched.
+
+Ques.56. How can we capture screenshots in selenium?
+Ans. Using the getScreenshotAs method of TakesScreenshot interface, we can take the screenshots in selenium.
+
+1
+2
+File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile(scrFile, new File("D:\\testScreenShot.jpg"));
+
+Ques.57. How to handle dropdowns in selenium?
+Ans. Using Select class-
+
+1
+2
+3
+4
+5
+6
+7
+8
+Select countriesDropDown = new Select(driver.findElement(By.id("countries")));
+dropdown.selectByVisibleText("India");
+ 
+//or using index of the option starting from 0
+dropdown.selectByIndex(1);
+ 
+//or using its value attribute
+dropdown.selectByValue("Ind");
+
+Ques.58. How to check which option in the dropdown is selected?
+Ans. Using is Selected() method we can check the state of a dropdown’s option.
+
+1
+2
+3
+4
+5
+Select countriesDropDown = new Select(driver.findElement(By.id("countries")));
+dropdown.selectByVisibleText("India");
+  
+//returns true or false value 
+System.out.println(driver.findElement(By.id("India")).isSelected());
+
+Ques.59. How can we check if an element is getting displayed on a web page?
+Ans. Using the isDisplayed() method we can check if an element is getting displayed on a web page.
+
+driver.findElement(By locator).isDisplayed();
+
+Ques.60. How can we check if an element is enabled for interaction on a web page?
+Ans. Using the isEnabled method we can check if an element is enabled or not.
+
+driver.findElement(By locator).isEnabled();
+
+Ques.61. What is the difference between driver.findElement() and driver.findElements() commands?
+
+Ans. The difference between driver.findElement() and driver.findElements() commands is-
+
+findElement() returns a single WebElement (found first) based on the locator passed as parameter. Whereas findElements() returns a list of WebElements, all satisfying the locator value passed.
+Syntax of findElement()-
+WebElement textbox = driver.findElement(By.id(“textBoxLocator”));
+Syntax of findElements()-
+List <WebElement> elements = element.findElements(By.id(“value”));
+Another difference between the two is- if no element is found then findElement() throws NoSuchElementException whereas findElements() returns a list of 0 elements.
+
+Ques.62. Explain the difference between implicit wait and explicit wait?
+Ans. An implicit wait, while finding an element waits for a specified time before throwing NoSuchElementException in case the element is not found. The timeout value remains valid throughout the WebDriver’s instance and for all the elements.
+
+driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+
+Whereas, Explicit wait is applied to a specified element only-
+
+WebDriverWait wait = new WebDriverWait(driver, 5);  
+wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+It is advisable to use explicit waits over implicit waits because higher timeout value of implicit wait set due to an element that takes time to be visible gets applied to all the elements. Thus increasing the overall execution time of the script. On the other hand, we can apply different timeouts to the different elements in case of explicit waits.
+
+
+Ques.63. How can we handle window UI elements and window POP ups using selenium?
+Ans. Selenium is used for automating Web-based applications only(or browsers only). For handling window GUI elements we can use AutoIT. AutoIT is a freeware used for automating window GUI. The AutoIt scripts follow simple BASIC language like syntax and can be easily integrated with selenium tests.
+
+Ques.64. What is Robot API?
+Ans. Robot API is used for handling Keyboard or mouse events. It is generally used to upload files to the server in selenium automation.
+
+1
+2
+3
+4
+Robot robot = new Robot();
+ 
+//Simulate enter key action
+robot.keyPress(KeyEvent.VK_ENTER);
+
+Ques.65. How to do file upload in selenium?
+Ans. File upload action can be performed in multiple ways-
+
+Using element.sendKeys(“path of file”) on the webElement of input tag and type file i.e. the elements should be like –
+<input type=”file” name=”fileUpload”>
+Using Robot API.
+Using the AutoIT API.
+
+Ques.66. How to handle the HTTPS website in selenium? or How to accept the SSL untrusted connection?
+Ans. Using profiles in firefox we can handle accept the SSL untrusted connection certificate. Profiles are basically set of user preferences stored in a file.
+
+1
+2
+3
+4
+FirefoxProfile profile = new FirefoxProfile();
+profile.setAcceptUntrustedCertificates(true); 
+profile.setAssumeUntrustedCertificateIssuer(false);
+WebDriver driver = new FirefoxDriver(profile); 
+
+Ques.67 How to do drag and drop in Selenium?
+Using Action class, drag and drop can be performed in selenium. Sample code-
+
+1
+2
+3
+4
+5
+6
+Actions builder = new Actions(driver);
+Action dragAndDrop = builder.clickAndHold(SourceElement)
+.moveToElement(TargetElement)
+.release(TargetElement)
+.build();
+dragAndDrop.perform();
+
+Ques.68. How to execute javascript in Selenium?
+Ans. JavaScript can be executed in selenium using JavaScriptExecuter. Sample code for javascript execution-
+
+1
+2
+3
+4
+WebDriver driver = new FireFoxDriver();
+if (driver instanceof JavascriptExecutor) {
+ ((JavascriptExecutor)driver).executeScript("{JavaScriptCode}");
+}
+
+Ques.69. How to handle alerts in Selenium?
+Ans. In order to accept or dismiss an alert box, the alert class is used. This requires first switching to the alert box and then using accept() or dismiss() command as the case may be.
+
+1
+2
+3
+4
+5
+6
+7
+Alert alert = driver.switchTo().alert(); 
+//To accept the alert
+alert.accept();
+ 
+Alert alert = driver.switchTo().alert(); 
+//To cancel the alert box
+alert.dismiss();
+
+Ques.70. What is HtmlUnitDriver?
+Ans. HtmlUnitDriver is the fastest WebDriver. Unlike other drivers (FireFoxDriver, ChromeDriver, etc), the HtmlUnitDriver is non-GUI, while running no browser gets launched.
+
+
+Ques.71. How to handle hidden elements in Selenium WebDriver?
+Ans. Using javaScript executor we can handle hidden elements-
+
+(JavascriptExecutor(driver))
+ .executeScript("document.getElementsByClassName(locator).click();");
+
+
+Selenium Framework Interview Questions
+Ques.72. What is Page Object Model or POM?
+Ans. Page Object Model(POM) is a design pattern in selenium. A design pattern is a solution or a set of standards that are used for solving commonly occurring software problems.
+Now coming to POM – POM helps to create a framework for maintaining selenium scripts. In POM for each page of the application, a class is created having the web elements belonging to the page and methods handling the events on that page. The test scripts are maintained in separate files and the methods of the page object files are called from the test scripts file.
+
+Ques.73. What are the advantages of POM?
+Ans. The advantages are POM are-
+
+Using POM we can create an Object Repository, a set of web elements in separate files along with their associated functions. Thereby keeping code clean.
+For any change in UI(or web elements) only page object files are required to be updated leaving test files unchanged.
+It makes code reusable and maintainable.
+
+Ques.74. What is Page Factory?
+Ans. Page factory is an implementation of the Page Object Model in selenium. It provides @FindBy annotation to find web elements and PageFactory.initElements() method to initialize all web elements defined with @FindBy annotation.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+public class SamplePage {
+ 
+    WebDriver driver;
+ 
+    @FindBy(id="search")
+    WebElement searchTextBox;
+    
+    @FindBy(name="searchBtn")
+    WebElement searchButton;
+ 
+    //Constructor
+    public samplePage(WebDriver driver){
+        this.driver = driver;
+        //initElements method to initialize all elements
+        PageFactory.initElements(driver, this);
+    }
+     
+    //Sample method
+    public void search(String searchTerm){
+        searchTextBox.sendKeys(searchTerm);  
+        searchButton.click();
+    }
+}
+
+Ques.75. What is an Object repository?
+Ans. An object repository is the centralized location of all the objects or WebElements of the test scripts. In Selenium, we can create an object repository using Page Object Model and Page Factory design patterns.
+
+Ques.76. What is a data-driven framework?
+Ans. A data-driven framework is one in which the test data is put in external files like CSV, Excel, etc separated from test logic written in test script files. The test data drives the test cases, i.e. the test methods run for each set of test data values. TestNG provides inherent support for data-driven testing using @dataProvider annotation.
+
+Ques.77. What is a keyword-driven framework?
+Ans. A keyword-driven framework is one in which the actions are associated with keywords and kept in external files e.g. an action of launching a browser will be associated with keyword – launchBrowser(), action to write in a textbox with keyword – writeInTextBox(webElement, textToWrite), etc. The code to perform the action based on a keyword specified in the external file is implemented in the framework itself.
+In this way, the test steps can be written in a file by even a person of a non-programming background once all the identified actions are implemented.
+
+Ques.78. What is a hybrid framework?
+Ans. A hybrid framework is a combination of one or more frameworks. Normally it is associated with a combination of data-driven and keyword-driven frameworks where both the test data and test actions are kept in external files(in the form of a table).
+
+Ques.79. What is Selenium Grid?
+Ans. Selenium grid is a tool that helps in the distributed running of test scripts across different machines having different browsers, browser versions, platforms, etc in parallel. In the selenium grid, there is a hub that is a central server managing all the distributed machines known as nodes.
+
+Ques.80. What are some advantages of the Selenium grid?
+Ans. The advantages of the Selenium grid are-
+
+It allows running test cases in parallel thereby saving test execution time.
+Multi-browser testing is possible using the Selenium grid by running the test on machines having different browsers.
+It allows multi-platform testing by configuring nodes having different operating systems.
+
+Ques.81. What is a hub in the selenium grid?
+Ans. A hub is a server or a central point in the selenium grid that controls the test executions on the different machines.
+
+Ques.82. What is a node in the selenium grid?
+Ans. Nodes are the machines that are attached to the selenium grid hub and have selenium instances running the test scripts. Unlike hub, there can be multiple nodes in the selenium grid.
+
+Ques.83. Explain the line of code Webdriver driver = new FirefoxDriver();.
+Ans. In the line of code Webdriver driver = new FirefoxDriver(); ‘WebDriver’ is an interface and we are creating an object of type WebDriver instantiating an object of FirefoxDriver class.
+
+Ques.84 What is the purpose of creating a reference variable- ‘driver’ of type WebDriver instead of directly creating a FireFoxDriver object or any other driver’s reference in the statement Webdriver driver = new FirefoxDriver();?
+Ans. By creating a reference variable of type WebDriver we can use the same variable to work with multiple browsers like ChromeDriver, IEDriver, etc.
+
+Ques.85. What is TestNG?
+Ans. TestNG(NG for Next Generation) is a testing framework that can be integrated with selenium or any other automation tool to provide multiple capabilities like assertions, reporting, parallel test execution, etc.
+
+Ques.86. What are some advantages of TestNG?
+Ans. Following are the advantages of TestNG-
+
+TestNG provides different assertions that help in checking the expected and actual results.
+It provides parallel execution of test methods.
+We can define the dependency of one test method over others in TestNG.
+We can assign priority to test methods in selenium.
+It allows grouping of test methods into test groups.
+It allows data-driven testing using @DataProvider annotation.
+It has inherent support for reporting.
+It has support for parameterizing test cases using @Parameters annotation.
+
+Ques.87. What is the use of the testng.xml file?
+Ans. testng.xml file is used for configuring the whole test suite. In the testng.xml file, we can create a test suite, create test groups, mark tests for parallel execution, add listeners and pass parameters to test scripts. Later this testng.xml file can be used for triggering the test suite.
+
+Ques.88. How can we pass the parameter to test script using TestNG?
+Ans. Using @Parameter annotation and ‘parameter’ tag in testng.xml we can pass parameters to the test script.
+Sample testng.xml –
+
+1
+2
+3
+4
+5
+6
+7
+8
+<suite name="sampleTestSuite">
+   <test name="sampleTest">   
+      <parameter name="sampleParamName" value="sampleValue"/>
+      <classes>
+         <class name="TestFile" />
+      </classes>      
+   </test>
+</suite>
+Sample test script-
+
+1
+2
+3
+4
+5
+6
+public class TestFile {
+   @Test
+   @Parameters("sampleParamName")
+   public void parameterTest(String paramValue) {
+      System.out.println("Value of sampleParamName is - " + sampleParamName);
+   }
+
+Ques.89. How can we create a data-driven framework using TestNG?
+Ans. Using @DataProvider we can create a data-driven framework in which data is passed to the associated test method and multiple iterations of the test run for the different test data values passed from the @DataProvider method. The method annotated with @DataProvider annotation return a 2D array of object.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+//Data provider returning 2D array of 3*2 matrix
+ @DataProvider(name = "dataProvider1")
+   public Object[][] dataProviderMethod1() {
+      return new Object[][] {{"kuldeep","rana"}, {"k1","r1"},{"k2","r2"}};
+   }
+ 
+   //This method is bound to the above data provider returning 2D array of 3*2 matrix
+   //The test case will run 3 times with different set of values
+   @Test(dataProvider = "dataProvider1")
+   public void sampleTest(String s1, String s2) {
+      System.out.println(s1 + " " + s2);
+   }
+
+Ques.90. What is the use of @Listener annotation in TestNG?
+Ans. Listeners are used to perform some action in case an event gets triggered. Usually, testNG listeners are used for configuring reports and logging. One of the most widely used listeners in testNG is ITestListener interface. It has methods like onTestSuccess, onTestFailure, onTestSkipped, etc. We need to implement this interface creating a listener class of our own. After that using the @Listener annotation, we can specify that for a particular test class, customized listener class should be used.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+@Listeners(PackageName.CustomizedListenerClassName.class)
+ 
+public class TestClass { 
+    WebDriver driver= new FirefoxDriver();
+     
+    @Test
+    public void testMethod(){
+    //test logic
+    }
+} 
+
+Ques.91. What is the use of @Factory annotation in TestNG?
+Ans. @Factory annotation helps in the dynamic execution of test cases. Using @Factory annotation we can pass parameters to the whole test class at run time. The parameters passed can be used by one or more test methods of that class.
+Example – there are two classes TestClass and the TestFactory class. Because of the @Factory annotation, the test methods in class TestClass will run twice with the data “k1” and “k2”.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+public class TestClass{
+    private String str;
+  
+    //Constructor
+    public TestClass(String str) {
+        this.str = str;
+    }
+  
+    @Test
+    public void TestMethod() {
+        System.out.println(str);
+    }
+}
+  
+public class TestFactory{
+    //The test methods in class TestClass will run twice with data "k1" and "k2"
+    @Factory
+    public Object[] factoryMethod() {
+        return new Object[] { new TestClass("K1"), new TestClass("k2") };
+    }
+}
+
+Ques.92. What is the difference between @Factory and @DataProvider annotation?
+Ans. @Factory method creates instances of test class and runs all the test methods in that class with a different set of data.
+Whereas, @DataProvider is bound to individual test methods and run the specific methods multiple times.
+
+Ques.93. How can we make one test method dependent on others using TestNG?
+Ans. Using the dependsOnMethods parameter inside @Test annotation in TestNG we can make one test method run only after the successful execution of the dependent test method.
+
+@Test(dependsOnMethods = { "preTests" })
+
+Ques.94. How can we set the priority of test cases in TestNG?
+Ans. Using the priority parameter in @Test annotation in TestNG we can define the priority of test cases. The default priority of the test when not specified is integer value 0. Example-
+
+@Test(priority=1)
+
+Ques.95. What are commonly used TestNG annotations?
+Ans. The commonly used TestNG annotations are-
+
+@Test – The @Test annotation marks a method as a test method.
+@BeforeSuite – The annotated method will run only once before all tests in this suite have run.
+@AfterSuite -The annotated method will run only once after all tests in this suite have run.
+@BeforeClass – The annotated method will run only once before the first test method in the current class is invoked.
+@AfterClass – The annotated method will run only once after all the test methods in the current class have been run.
+@BeforeTest – The annotated method will run before any test method belonging to the classes inside the <test> tag is run.
+@AfterTest – The annotated method will run after all the test methods belonging to the classes inside the <test> tag have run.
+@BeforeMethod – The annotated method will run before each test method marked by @Test annotation.
+@AfterMethod – The annotated method will run after each test method marked by @Test annotation.
+
+Ques.96. What are some common assertions provided by TestNG?
+Ans. Some of the common assertions provided by testNG are-
+
+assertEquals(String actual, String expected, String message) – (and other overloaded data type in parameters)
+assertNotEquals(double data1, double data2, String message) – (and other overloaded data type in parameters)
+assertFalse(boolean condition, String message)
+assertTrue(boolean condition, String message)
+assertNotNull(Object object)
+fail(boolean condition, String message)
+true(String message)
+Ques.97. How can we run test cases in parallel using TestNG?
+Ans. In order to run the tests in parallel just add these two key-value pairs in the suite-
+
+parallel=”{methods/tests/classes}”
+thread-count=”{number of thread you want to run simultaneously}”.
+<suite name="ArtOfTestingSuite" parallel="methods" thread-count="5">
+Check Running Selenium Tests in parallel for details.
+
+Ques.98. Name an API used for reading and writing data to excel files.
+Ans. Apache POI API and JXL(Java Excel API) can be used for reading, writing and updating excel files.
+
+Ques.99. Name an API used for logging in Java.
+Ans. Log4j is an open-source API widely used for logging in Java. It supports multiple levels of logging like – ALL, DEBUG, INFO, WARN, ERROR, TRACE and FATAL.
+
+Ques.100. What is the use of logging in automation?
+Ans. Logging helps in debugging the tests when required and also provides storage of test’s runtime behavior.
