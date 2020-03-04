@@ -43,6 +43,11 @@ for file in os.listdir(os.getcwd()):
 ...         os.rename(fpath, newname)
 
 5. Delete files of size more than 100mb in a folder which are older than 90 days
+# simple find
+find $dir_to_search -size +100M -exec rm -f {}\;
+
+# putting multiple filters with or
+find . -type f ( -size +100M -o -mtime 50) -exec rm -f {}\;
 
 6. Reverse the words in a sentence
 7. Given an input file having lines with alphabets and numbers. Print only the distinct alpha-numberic lines.
