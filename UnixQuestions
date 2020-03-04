@@ -1,5 +1,30 @@
  1. Delete blank lines in file
+ ```
+ sed '/^$/d' file1
+ 
+ OR 
+ 
+ grep -v "^$" file1
+ ```
  2. Print number of times each word appears in a file
+ ```
+ def word_count(filename):
+    d = {}
+    with open( filename, 'r') as fr:
+        for line in fr:
+            line = line.strip()
+            words = line.split(' ')
+            for word in words :
+                if word in d:
+                       d[word]+=1
+                else:
+                       d[word] = 1
+    return d
+
+
+print(word_count("/home/cloud_user/tests/file1"))
+```
+
 3. List all the files in directory except .txt and .pdf
 4. Rename all .jpg files to .jpeg
 5. Delete files of size more than 100mb in a folder which are older than 90 days
