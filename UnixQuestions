@@ -50,7 +50,11 @@ find $dir_to_search -size +100M -exec rm -f {}\;
 find . -type f ( -size +100M -o -mtime 50) -exec rm -f {}\;
 
 6. Reverse the words in a sentence
+sentence[::-1]
+
 7. Given an input file having lines with alphabets and numbers. Print only the distinct alpha-numberic lines.
+
+
 8. Given a comma separated input file with items, category and cost. Display the category and its sum.
 9. Output of following command ps -ef | awk '{ print $1}' | sort | uniq | wc -l
 10. Kill process based on user and process.
