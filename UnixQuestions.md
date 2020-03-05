@@ -1,14 +1,15 @@
- 1. Delete blank lines in file
- ```
+ #### 1. Delete blank lines in file
+ ```bash
  sed '/^$/d' file1
  
  OR 
  
  grep -v "^$" file1
  
- ```python
- 2. Print number of times each word appears in a file
  ```
+ 
+ #### 2. Print number of times each word appears in a file
+ ```python
  
  def word_count(filename):
     d = {}
@@ -27,8 +28,8 @@
 print(word_count("/home/cloud_user/tests/file1"))
 ```
 
-3. List all the files in directory except .txt and .pdf
-```
+#### 3. List all the files in directory except .txt and .pdf
+```python
 for file in os.listdir(os.getcwd()):
 ...     filepath = os.path.abspath(file)
 ...     name, ext = os.path.splitext(filepath)
@@ -36,28 +37,46 @@ for file in os.listdir(os.getcwd()):
 ...         print(name)
 ```
 
-4. Rename all .jpg files to .jpeg
+#### 4. Rename all .jpg files to .jpeg
+```python
  for f in os.listdir(os.getcwd()):
 ...     fpath = os.path.abspath(file)
 ...     fname, fext = os.splitext(fpath)
 ...     if fext != 'py':
 ...         newname = os.getcwd() + '/' + fname + '.jpg'
 ...         os.rename(fpath, newname)
+```
 
-5. Delete files of size more than 100mb in a folder which are older than 90 days
-# simple find
+#### 5. Delete files of size more than 100mb in a folder which are older than 90 days
+##### simple find
 find $dir_to_search -size +100M -exec rm -f {}\;
 
-# putting multiple filters with or
+##### putting multiple filters with or
 find . -type f ( -size +100M -o -mtime 50) -exec rm -f {}\;
 
-6. Reverse the words in a sentence
+#### 6. Reverse the words in a sentence
+```python
 sentence[::-1]
+```
 
-7. Given an input file having lines with alphabets and numbers. Print only the distinct alpha-numberic lines.
+#### 7. Given an input file having lines with alphabets and numbers. Print only the distinct alpha-numberic lines.
+```bash
+# bash
+sort file1|uniq -u		# sort line then select unique lines
+```
+
+```python
+def get_unique_lines(file):
+    with open(file,'r') as fr:
+        lines = fr.readlines()
+        lines_stripped = [line.strip() for line in lines if len(line.strip()) != 0 ]		# filter out empty lines
+    return set(lines_stripped)									# set returns only unique lines
+```
 
 
-8. Given a comma separated input file with items, category and cost. Display the category and its sum.
+8. Given a comma separated input file with items, category and cost. Display the category and its sum/processing csv
+
+
 9. Output of following command ps -ef | awk '{ print $1}' | sort | uniq | wc -l
 10. Kill process based on user and process.
 11. Print contents of a file starting from the nth line.
