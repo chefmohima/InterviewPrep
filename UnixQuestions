@@ -5,9 +5,11 @@
  OR 
  
  grep -v "^$" file1
- ```
+ 
+ ```python
  2. Print number of times each word appears in a file
  ```
+ 
  def word_count(filename):
     d = {}
     with open( filename, 'r') as fr:
