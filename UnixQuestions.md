@@ -76,10 +76,69 @@ def get_unique_lines(file):
 
 8. Given a comma separated input file with items, category and cost. Display the category and its sum/processing csv
 
+SAMPLE CSV
+items,category,price
+watch, gadget, 1111
+tv, electronics, 2222
+laptop, gadget, 3333
+mobile, gadget, 4444
+
+
+```python
+import csv
+import os
+
+def process_csv(csvfile):
+    category_price_map = {}
+
+    #with open(csvfile, 'r') as cf:
+    #    csvreaderobj = csv.reader(cf)
+    #    for row in csvreaderobj:
+    #        (item, category, price) = row
+            # print('item : {}, cateory : {}, price: {}'.format(item, category, price))
+    with open(csvfile, 'r') as cf:
+        csvreaderobj = csv.DictReader(cf)
+        category_price_map = {}
+        for row in csvreaderobj:
+            #print(row)
+            if row['category'] in category_price_map:
+                category_price_map[row['category']] += int(row['price'])
+            else:
+                category_price_map[row['category']] = int(row['price'])
+    return category_price_map
+
+
+
+
+currentdir = os.getcwd()
+filepath = currentdir + '/' + 'sample.csv'
+print(process_csv(filepath))
+
+```
+
+
 
 9. Output of following command ps -ef | awk '{ print $1}' | sort | uniq | wc -l
+
+??
+
 10. Kill process based on user and process.
+pkill -u user_name
+
 11. Print contents of a file starting from the nth line.
+```bash
+sed -n '2,$p' sample.csv		# print from line 2 to end $
+```
+
+print nth line
+```bash
+sed -n 1p sample.csv
+```
+
+print last n lines
+```bash
+ tail -2 sample.csv
+ ```
 12. Write a command to calculate the total size of all pdf files in the directory.
 13. Write a command to delete the first and last line in every file in the directory and rename it.
 14. Given a file with records. Print the sum of m where name=aman
