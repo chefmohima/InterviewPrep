@@ -1,0 +1,16 @@
+json.loads() - json string to Python data
+json.load()  - json file to Python data
+
+json.dump() - Python to json file
+json.dumps() - Python to json string
+
+
+csv
+csv.reader() takes in a file handle and returns a readerobj which is an iterator. we can iterate through the reader object to get each row of csv file
+
+csv.writer() takes in file handle of output file and returns write object. iterate through data and use the writeobj.write method to write each row
+
+
+csv.DictReader() returns a dictreaderobject. iterate through it to get dictionaries with cell values mapped to column names
+csv.DictWriter() returns a dictwriter object. using its write method write dictionaries as rows where the keys are column names
+
