@@ -140,11 +140,35 @@ print last n lines
  tail -2 sample.csv
  ```
 12. Write a command to calculate the total size of all pdf files in the directory.
+
+```python
+sum_size, file_count = 0, 0
+for root, dir, files in os.walk(os.getcwd()):
+...     for file in files:
+...         if file.endswith('.csv'):
+                file_count += 1
+...             file_path = root + '/' + file
+...             sum_size += os.path.getsize(file_path))
+...
+```
+
+
 13. Write a command to delete the first and last line in every file in the directory and rename it.
+```python
+sed -i -e '1d' -e '$d' ./sample/$filename
+```
+
 14. Given a file with records. Print the sum of m where name=aman
 15. Given a file with numbers. Sort each line.
 16. Bash shell script to reverse a string / word.
 17. Reverse last 4 digits of a string.
+```python
+# use slicing
+>>> s = 'abcdefg'
+>>> n = len(s)-4
+>>> print(s[:n]+s[n:][::-1])
+```
+
 1. Delete blank lines in file
 $ sed '^\s*$'/d' file.txt
 To save changes back to file
