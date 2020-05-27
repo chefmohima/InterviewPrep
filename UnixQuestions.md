@@ -1,4 +1,27 @@
- #### 1. Delete blank lines in file
+#### check disk space
+```
+df -h
+```
+
+#### check ports
+```
+netstat -a
+netstat -at # tcp ports only
+netstat -ut # udp ports
+```
+
+#### view process with most cpu usage
+```
+top : lists dynamic list of processes with usage of cpu data
+top -n 10 # list only 10
+```
+
+
+
+
+
+
+#### 1. Delete blank lines in file
  ```bash
  sed '/^$/d' file1
  
